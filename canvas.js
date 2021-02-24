@@ -55,6 +55,8 @@ const colours = [
     '#987654'
 ];
 
+let friction = 0.9; //Friction coefficient to simulate energy loss
+
 
 window.addEventListener('mousemove',
     function(event) {
@@ -87,7 +89,7 @@ function Circle(x, y, dx, dy, radius, colour) {
             this.dx = -this.dx;
         }
         if (this.y + this.radius > innerHeight || this.y - this.radius < 0){
-            this.dy = -this.dy;
+            this.dy = -this.dy * friction; //Added friction coefficient here.
         }
         else {
             this.dy += 1; //This adds the illusion of gravity as it causes the ball to acccelerate on the way down.
